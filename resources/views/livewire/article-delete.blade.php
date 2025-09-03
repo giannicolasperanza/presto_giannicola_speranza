@@ -1,0 +1,1 @@
+<button class="btn btn-outline-danger" wire:click="deleteArticle({{$article}})">Elimina articolo</button>
