@@ -7,14 +7,7 @@ use App\Models\Article;
 
 class ArticleIndex extends Component
 {
-
-    public $selectedArticleId = null; 
-    
-    public function selectArticle($articleId) 
-    {
-        $this->selectedArticleId = $articleId;
-        $this->dispatch('article-selected', articleId: $articleId);
-    }
+    // Rimossa la funzionalità di selezione articoli per il layout a griglia
     
     public function render()
     {

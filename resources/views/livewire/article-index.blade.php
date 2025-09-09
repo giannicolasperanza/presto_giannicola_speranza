@@ -1,12 +1,8 @@
-<div class="row min-vh-100 justify-content-center align-items-center">
-   <div class="col-12">
-    
-   </div>
+<div class="row justify-content-center">
 @foreach($articles as $article)
-    <div class="col-12 col-md-4 mb-4">
-    <div class="card mx-auto cardCustom {{ $selectedArticleId == $article->id ? 'border-primary' : '' }}" 
-         style="width: 20rem; cursor: pointer;"
-         wire:click="selectArticle({{ $article->id }})">
+    <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+    <div class="card mx-auto cardCustom" 
+         style="width:20rem;">
   
   <div class="card-body">
  
