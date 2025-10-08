@@ -11,9 +11,25 @@ class ArticleDetail extends Component
     
     protected $listeners = ['article-selected' => 'loadArticle'];
     
+    /**
+     * Mount: inizializza il componente caricando l'articolo tramite ID
+     * Accetta l'ID dell'articolo invece dell'oggetto completo
+     */
+    public function mount($articleId = null)
+    {
+        if ($articleId) {
+            // Carica l'articolo usando il metodo loadArticle
+            $this->loadArticle($articleId);
+        }
+    }
+    
+    /**
+     * Carica un articolo tramite ID
+     * Include le relazioni con user e category per avere tutti i dati necessari
+     */
     public function loadArticle($articleId)
     {
-        $this->selectedArticle = Article::find($articleId);
+        $this->selectedArticle = Article::with(['user', 'category'])->find($articleId);
     }
     
     public function render()

@@ -25,6 +25,95 @@
         </div>
     </section>
 
+    <!-- Latest Articles Section -->
+    <section class="latest-articles-section py-5 bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="display-5 fw-bold text-dark mb-3">Ultimi articoli pubblicati</h2>
+                    <p class="lead text-muted">
+                        Scopri le ultime offerte aggiunte dai nostri utenti
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                @forelse($latestArticles as $article)
+                    <!-- Article Card -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100 border-0 shadow-sm hover-lift">
+                            <!-- Immagine dell'articolo (placeholder per ora) -->
+                            <img src="https://picsum.photos/300/200?random={{ $article->id }}" 
+                                 class="card-img-top" 
+                                 alt="{{ $article->title }}">
+                            
+                            <div class="card-body d-flex flex-column">
+                                <!-- Categoria badge -->
+                                @if($article->category)
+                                    <span class="badge bg-primary mb-2 align-self-start">
+                                        {{ $article->category->name }}
+                                    </span>
+                                @endif
+                                
+                                <!-- Titolo dell'articolo -->
+                                <h5 class="card-title fw-bold mb-2">
+                                    {{ Str::limit($article->title, 50) }}
+                                </h5>
+                                
+                                
+                                
+                                <!-- Prezzo -->
+                                <div class="mt-auto">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <span class="h4 mb-0 text-primary fw-bold">
+                                            € {{ number_format($article->price, 2, ',', '.') }}
+                                        </span>
+                                    </div>
+                                    
+                                    <!-- Info venditore e data -->
+                                    <div class="text-muted small mb-3">
+                                        <i class="bi bi-person"></i> {{ $article->user->name ?? 'Anonimo' }}
+                                        <br>
+                                        <i class="bi bi-calendar"></i> {{ $article->created_at->format('d/m/Y') }}
+                                    </div>
+                                    
+                                    <!-- Pulsante dettagli -->
+                                    <a href="{{ route('article.show', $article) }}" 
+                                       class="btn btn-outline-primary w-100">
+                                        Vedi dettagli
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @empty
+                    <!-- Messaggio se non ci sono articoli -->
+                    <div class="col-12">
+                        <div class="text-center py-5">
+                            <i class="bi bi-inbox display-1 text-muted"></i>
+                            <h4 class="mt-3 text-muted">Nessun articolo pubblicato ancora</h4>
+                            <p class="text-muted">Sii il primo a pubblicare un articolo!</p>
+                            <a href="{{ route('article.create') }}" class="btn btn-primary mt-3">
+                                Pubblica il tuo primo articolo
+                            </a>
+                        </div>
+                    </div>
+                @endforelse
+            </div>
+
+            <!-- Link per vedere tutti gli articoli -->
+            @if($latestArticles->count() > 0)
+                <div class="row mt-5">
+                    <div class="col-12 text-center">
+                        <a href="{{ route('article.index') }}" class="btn btn-primary btn-lg px-5">
+                            Vedi tutti gli articoli
+                        </a>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services-section py-5">
         <div class="container">

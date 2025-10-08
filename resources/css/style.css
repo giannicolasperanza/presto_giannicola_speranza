@@ -77,6 +77,10 @@ body{
 }
 
 .cardCustom{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 100%;
     background-color: var(--color-light)!important;
     border-radius: 10px;
     border: 1px solid var(--color-secondary)!important;
@@ -89,6 +93,9 @@ body{
  
    
 }
+
+
+
 
 /* Hero Section - Sezione principale della welcome page */
 .hero-section {
@@ -233,5 +240,112 @@ body{
     .hero-image {
         max-width: 300px;
         margin: 0 auto;
+    }
+}
+
+/* Search Header Bar - Barra di ricerca a tutta larghezza stile header */
+.search-header-bar {
+    background: linear-gradient(135deg, var(--color-light) 0%, #ffffff 100%);
+    border-bottom: 3px solid var(--color-warning);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.search-header-bar .form-label {
+    color: var(--color-primary-dark);
+    margin-bottom: 0.5rem;
+}
+
+.search-header-bar .form-control,
+.search-header-bar .form-select {
+    border: 2px solid var(--color-secondary);
+    transition: all 0.3s ease;
+}
+
+.search-header-bar .form-control:focus,
+.search-header-bar .form-select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 0.2rem rgba(237, 178, 48, 0.25);
+}
+
+/* Latest Articles Section - Sezione ultimi articoli pubblicati */
+.latest-articles-section {
+    background: linear-gradient(180deg, var(--color-light) 0%, #ffffff 100%);
+}
+
+.latest-articles-section h2 {
+    color: var(--color-primary-dark)!important;
+}
+
+/* Effetto hover per le card degli articoli */
+.hover-lift {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2)!important;
+}
+
+.hover-lift .card-img-top {
+    transition: all 0.3s ease;
+}
+
+.hover-lift:hover .card-img-top {
+    filter: brightness(1.05);
+}
+
+/* Badge per la categoria */
+.latest-articles-section .badge {
+    font-weight: 600;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+}
+
+/* Stili per il prezzo in evidenza */
+.latest-articles-section .h4.text-primary {
+    color: var(--color-warning)!important;
+}
+
+/* Pulsante dettagli */
+.latest-articles-section .btn-outline-primary {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transition: all 0.3s ease;
+}
+
+.latest-articles-section .btn-outline-primary:hover {
+    background-color: var(--color-primary)!important;
+    color: var(--color-light)!important;
+    border-color: var(--color-primary)!important;
+    transform: scale(1.02);
+}
+
+/* Stili per la pagina di dettaglio articolo */
+
+/* Carosello - dimensioni e stile immagini */
+.carousel-image {
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Box prezzo in evidenza nella pagina dettaglio */
+.price-box {
+    background: linear-gradient(135deg, rgba(237, 178, 48, 0.1) 0%, rgba(231, 119, 40, 0.1) 100%);
+    border: 2px solid var(--color-accent);
+}
+
+/* Box informazioni venditore */
+.seller-info {
+    background-color: rgba(237, 230, 242, 0.3);
+    border-color: var(--color-secondary) !important;
+}
+
+/* Responsive: dimensione carosello su schermi piccoli/mobile */
+@media (max-width: 768px) {
+    .carousel-image {
+        height: 300px;
     }
 }
